@@ -10,12 +10,13 @@ with open(model_path, "rb") as f:
   model = load(f)
 
 class Game(BaseModel):
+  #Home
   FG_PCT_home: float
   FT_PCT_home: float
   FG3_PCT_home: float
   AST_home: int
   REB_home: int
-  
+  #Away
   FG_PCT_away: float
   FT_PCT_away: float
   FG3_PCT_away: float

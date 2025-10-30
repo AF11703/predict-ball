@@ -1,5 +1,5 @@
 .venv
-backend/__pycache__
-frontend/basketballAI/node_modules
-frontend/basketballAI/README.md
-frontend/basketballAI/vite.config.js 
+server/__pycache__
+client/basketballAI/node_modules
+client/basketballAI/README.md
+client/basketballAI/vite.config.js 
