@@ -4,7 +4,7 @@ from pathlib import Path
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-model_path = Path().cwd() / "model/model.pkl"
+model_path = Path().cwd() / "ml-model/model.pkl"
 
 with open(model_path, "rb") as f:
   model = load(f)
@@ -25,14 +25,13 @@ class Game(BaseModel):
 
 app = FastAPI()
 
-#When predicting game outcomes, we obviously don't have the game we're predicting's stats, so let's use the average of the past games up to 10 to serve as our stats for the prediction 
-@app.post("/predict")
+@app.post("/api/predict")
 def predict(game: Game):
   try:
     input_data = game.model_dump()
     
     prediction = model.predict(DataFrame([input_data]))
-    return {"win": int(prediction[0])} #1 if win, 0 if loss
+    return {"home_win": int(prediction[0])} #1 if win, 0 if loss
   except Exception as e:
     print(f"Error: {e}")
     return {"result": f"Error: {e}"}

@@ -1,5 +1,7 @@
 .venv
-server/__pycache__
+.env
+server/microservice/__pycache__
+server/node_modules
 client/basketballAI/node_modules
 client/basketballAI/README.md
 client/basketballAI/vite.config.js 
