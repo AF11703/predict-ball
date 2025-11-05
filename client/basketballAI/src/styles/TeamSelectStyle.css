@@ -1,0 +1,31 @@
+.teamsCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  height: 100vh;
+}
+
+.teamSelectCarousel {
+  width: 40%;  /* Adjust this value to control carousel width */
+}
+
+.versus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+
+/* Style the carousel images to be centered */
+.carousel-item img {
+  margin: 0 auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Make carousel captions visible against any background */
+.carousel-caption {
+  border-radius: 10px;
+  padding: 10px;
+}

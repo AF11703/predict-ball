@@ -1,9 +1,10 @@
 import axios from "axios";
 import { StatusCodes } from "http-status-codes";
 import STAT_CATEGORIES from "../stat_categories.js";
+import dotenv from "dotenv";
+dotenv.config();
 
-
-const dataUrl = `https://stats.nba.com/stats/leaguegamelog?Counter=1000&DateFrom=&DateTo=&Direction=DESC&ISTRound=&LeagueID=00&PlayerOrTeam=T&Season=2025-26&SeasonType=Regular%20Season&Sorter=DATE`;
+const dataUrl = process.env.STATS_URL;
 const config = {
   headers: {
     "sec-fetch-mode": "cors",
@@ -108,10 +109,10 @@ export const predictMatchup = async (req, res) => {
     
     const result = apiResponse.data.home_win;
     console.log(apiResponse.data);
-    res.status(StatusCodes.CREATED).json({"resultWin": result});
+    res.status(StatusCodes.CREATED).json({ resultWin: result});
   } catch(error) {
     console.error(error);
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({"error": "Something went wrong, please try again later."})
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: "Something went wrong, please try again later."})
   }
   
 }

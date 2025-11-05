@@ -1,6 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import { rateLimit } from "express-rate-limit";
-import teamsRouter from "./routes/games.js";
+import gamesRouter from "./routes/games.js";
 import cors from "cors";
 
 const app = express();
@@ -19,7 +22,7 @@ const limiter = rateLimit({
 app.use(cors());
 app.use(limiter);
 app.use(express.json());
-app.use('/api', teamsRouter);
+app.use('/api', gamesRouter);
 
 app.listen(3000, () => {
   console.log(`Server listening on port 3000`);

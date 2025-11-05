@@ -1,7 +1,8 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 import Home from "./pages/Home";
-
+import TeamSelect from './pages/TeamSelect';
+import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
   return (
     <Router>
@@ -11,7 +12,7 @@ function App() {
       </nav>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/select'/>
+        <Route path='/teamSelect' element={<TeamSelect />} />
       </Routes>
     </Router>
   );
