@@ -1,5 +1,6 @@
 .venv
 .env
+server/.env
 server/microservice/__pycache__
 server/node_modules
 client/basketballAI/node_modules
