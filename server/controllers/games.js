@@ -108,8 +108,7 @@ export const predictMatchup = async (req, res) => {
     });
     
     const result = apiResponse.data.home_win;
-    console.log(apiResponse.data);
-    res.status(StatusCodes.CREATED).json({ resultWin: result});
+    res.status(StatusCodes.CREATED).json({ homeWin: result});
   } catch(error) {
     console.error(error);
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: "Something went wrong, please try again later."})
