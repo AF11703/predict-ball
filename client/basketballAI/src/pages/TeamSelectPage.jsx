@@ -3,10 +3,10 @@ import teams from "../../../../server/team-resources/teams.json";
 
 const TeamSelectPage = () => {
   return(
-    <div className="flex flex-col bg-linear-to-t/decreasing from-gray-800 to-teal-400 border border-t-0 border-teal-300/55  shadow-2xl shadow-teal-700 drop-shadow-blue-300/50 drop-shadow-2xl rounded-2xl items-center justify-center gap-6 md:gap-12 px-4 py-8 my-40">
+    <div className="flex flex-col bg-linear-210 from-gray-950 to-cyan-400 border border-cyan-300/55 shadow-2xl shadow-cyan-400 drop-shadow-teal-300/40 drop-shadow-xs rounded-2xl items-center justify-center gap-6 md:gap-12 px-4 py-8 my-40">
       <div className="flex flex-col md:flex-row items-center justify-center self-center gap-6 md:gap-12">
         <div className="flex flex-col items-center space-y-4" id="homeTeam">
-          <h2 className="text-xl text-shadow-2xs text-white/20 text-shadow-white font-bold">Home</h2>
+          <h2 className="text-xl text-shadow-2xs text-white/20 text-shadow-white font-bold translate-y-2">Home</h2>
           <TeamSelect teams={teams} />
         </div>
 
@@ -15,7 +15,7 @@ const TeamSelectPage = () => {
         </div>
         
         <div className="flex flex-col items-center space-y-4" id="awayTeam">
-          <h2 className="text-xl text-shadow-2xs text-white/20 text-shadow-white font-bold">Away</h2>
+          <h2 className="text-xl text-shadow-2xs text-white/20 text-shadow-white font-bold translate-y-2">Away</h2>
           <TeamSelect teams={teams} />
         </div>
       </div>
