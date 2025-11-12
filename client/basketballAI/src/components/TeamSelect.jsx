@@ -1,7 +1,7 @@
 import Select from "react-select";
 import { useState, useEffect } from "react";
 
-const TeamSelect = ({teams}) => {
+const TeamSelect = ({teams, onTeamChangeCallback}) => {
   const [teamOption, setTeam] = useState(null);
   const [logo, setLogo] = useState("");
 
@@ -9,6 +9,7 @@ const TeamSelect = ({teams}) => {
   
   const handleTeamChange = (selectedTeam) => {
     setTeam(selectedTeam);
+    onTeamChangeCallback(selectedTeam);
   };
 
   useEffect(() => {

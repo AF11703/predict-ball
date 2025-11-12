@@ -1,4 +1,4 @@
-const Home = () => {
+const HomePage = () => {
   return (
     <div className="flex flex-col bg-linear-120 from-gray-950 to-emerald-400 border border-teal-500 rounded-2xl items-center justify-center self-center my-40 py-20 shadow-2xl shadow-emerald-400 drop-shadow-xs drop-shadow-emerald-300/40">
       <h1 className="text-4xl pb-4 font-sans font-black">Predict Ball</h1>
@@ -8,4 +8,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
