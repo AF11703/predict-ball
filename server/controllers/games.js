@@ -87,18 +87,18 @@ export const predictMatchup = async (req, res) => {
   const homeTeam = req.body.homeTeam; 
   const awayTeam = req.body.awayTeam;
 
-  const postData = JSON.stringify({
-    FG_PCT_home: homeTeam.FG_PCT,
-    FT_PCT_home: homeTeam.FT_PCT,
-    FG3_PCT_home: homeTeam.FG3_PCT,
-    AST_home: homeTeam.AST,
-    REB_home: homeTeam.REB,
-    FG_PCT_away: awayTeam.FG_PCT,
-    FT_PCT_away: awayTeam.FT_PCT,
-    FG3_PCT_away: awayTeam.FG3_PCT,
-    AST_away: awayTeam.AST,
-    REB_away: awayTeam.REB
-  });
+  const postData = {
+    FG_PCT_home: parseFloat(homeTeam.FG_PCT),
+    FT_PCT_home: parseFloat(homeTeam.FT_PCT),
+    FG3_PCT_home: parseFloat(homeTeam.FG3_PCT),
+    AST_home: parseInt(homeTeam.AST),
+    REB_home: parseInt(homeTeam.REB),
+    FG_PCT_away: parseFloat(awayTeam.FG_PCT),
+    FT_PCT_away: parseFloat(awayTeam.FT_PCT),
+    FG3_PCT_away: parseFloat(awayTeam.FG3_PCT),
+    AST_away: parseInt(awayTeam.AST),
+    REB_away: parseInt(awayTeam.REB)
+  };
 
   try {
     const apiResponse = await axios.post('http://127.0.0.1:8000/api/predict', postData, {

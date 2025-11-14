@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import PredictionResult from "../components/PredictionResult";
 import axios from "axios";
 
 const averageTeamStats = (data) => {
@@ -31,8 +32,9 @@ const averageTeamStats = (data) => {
 const PredictionPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  // const [prediction, setPrediction] = useState(null);
-  // const [loading, setLoading] = useState(false);
+
+  const [prediction, setPrediction] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const { homeTeam, awayTeam } = location.state || {};
@@ -45,16 +47,25 @@ const PredictionPage = () => {
     const homeAbbr = homeTeam.value;
     const awayAbbr = awayTeam.value;
 
+    console.log(`Home: ${homeAbbr}`);
+    console.log(`Away: ${awayAbbr}`);
+
     const fetchPrediction = async () => {
       setError(null);
+      setLoading(true);
 
       try {
         const responseHome = await axios.get(`http://localhost:3000/api/games/${homeAbbr}`);
         const responseAway = await axios.get(`http://localhost:3000/api/games/${awayAbbr}`);
 
+        console.log("Home Response", responseHome);
+        console.log("Away Response", responseAway);
+
         const homeAvgs = averageTeamStats(responseHome.data);
         const awayAvgs = averageTeamStats(responseAway.data);
 
+        console.log("Home avg", homeAvgs);
+        console.log("Away avg", awayAvgs);
 
         const response = await axios.post("http://localhost:3000/api/games/predict", {
           homeTeam: homeAvgs,
@@ -66,15 +77,43 @@ const PredictionPage = () => {
         });
 
         console.log(response.data);
+        setPrediction(response.data);
       }
       catch (error) {
         console.error(error);
         setError(error);
       }
+      finally{
+        setLoading(false);
+      }
     }
 
     fetchPrediction();
   }, [homeTeam, awayTeam, navigate]);
+
+  if (loading) {
+    return(
+      <h2>Loading prediction...</h2>
+    );
+  }
+
+  if (error) {
+    return(
+      <div>
+        <h2>Error</h2>
+        <p>Something went wrong, try again later</p>
+      </div>
+    );
+  }
+
+  if (prediction) {
+    return(
+    <div>
+      <PredictionResult homeTeam={homeTeam} awayTeam={awayTeam} prediction={prediction} />
+    </div>
+    )
+  }
+  
 }
 
 export default PredictionPage;

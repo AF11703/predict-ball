@@ -5,7 +5,7 @@ const TeamSelect = ({teams, onTeamChangeCallback}) => {
   const [teamOption, setTeam] = useState(null);
   const [logo, setLogo] = useState("");
 
-  const options = teams.map(t => ({value: t.abbr, label: t.name}));
+  const options = teams.map(t => ({value: t.abbr, label: t.name, img: t.img}));
   
   const handleTeamChange = (selectedTeam) => {
     setTeam(selectedTeam);

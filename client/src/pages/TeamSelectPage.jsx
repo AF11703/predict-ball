@@ -1,5 +1,5 @@
 import TeamSelect from "../components/TeamSelect";
-import teams from "../../../../server/team-resources/teams.json";
+import teams from "../../../server/team-resources/teams.json";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

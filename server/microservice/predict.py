@@ -31,6 +31,8 @@ def predict(game: Game):
     input_data = game.model_dump()
     
     prediction = model.predict(DataFrame([input_data]))
+    print(f"Raw prediction: {prediction}")
+    print(f"Prediction value: {prediction[0]}")
     return {"home_win": int(prediction[0])} #1 if win, 0 if loss
   except Exception as e:
     print(f"Error: {e}")
