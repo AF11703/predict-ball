@@ -93,24 +93,32 @@ const PredictionPage = () => {
 
   if (loading) {
     return(
-      <h2>Loading prediction...</h2>
+      <div className="flex flex-col justify-center items-center align-middle h-screen">
+        <h2>Loading prediction...</h2>
+      </div>
     );
   }
 
   if (error) {
+    if (error.status === 429) {
+      return(
+        <div className="flex flex-col justify-center items-center align-middle h-screen">
+          <h2><span className="text-red-500/70">Error</span></h2>
+          <p>Too many requests, please try again later</p>
+      </div>
+      )
+    }
     return(
-      <div>
+      <div className="flex flex-col justify-center items-center align-middle h-screen">
         <h2>Error</h2>
-        <p>Something went wrong, try again later</p>
+        <p>Something went wrong, please try again later</p>
       </div>
     );
   }
 
   if (prediction) {
     return(
-    <div>
       <PredictionResult homeTeam={homeTeam} awayTeam={awayTeam} prediction={prediction} />
-    </div>
     )
   }
   

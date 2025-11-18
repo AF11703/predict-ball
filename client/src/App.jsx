@@ -15,7 +15,7 @@ function App() {
         <div className="-translate-6 w-full overflow-hidden text-right">
           <div className="lg:grow font-bold space-x-5 text-right overflow-hidden">
             <Link className="hover:underline" to="/">Home</Link>
-            <Link className="hover:underline" to="/teamSelect">Teams</Link>
+            <Link className="hover:underline" to="/teamSelect">Select Teams</Link>
           </div>
         </div>
       </nav>
