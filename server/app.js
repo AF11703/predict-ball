@@ -20,7 +20,7 @@ const limiter = rateLimit({
 });
 
 app.use(cors());
-app.use(limiter);
+//app.use(limiter);
 app.use(express.json());
 app.use('/api', gamesRouter);
 
