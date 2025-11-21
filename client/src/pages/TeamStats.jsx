@@ -1,17 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import averageTeamStats from "../helper/averageTeamStats";
-import axios from "axios";
 import teams from "../../../server/team-resources/teams.json";
+import queryStats from "../helper/queryStats";
 
 
 const TeamStats = () => {
   const { abbr } = useParams();
   const team = teams.find(team => team.abbr === abbr);
 
-  const { data: response, isLoading, error } = useQuery({queryKey: ['teamStats'], queryFn: async () => {
-    return await axios.get(`http://localhost:3000/api/games/${abbr}`);
-  }});
+  const { data: response, isLoading, error } = useQuery({queryKey: ['teamStats'], queryFn: async () => queryStats(abbr)})
   
   if (isLoading) return(<div className="flex flex-col justify-center items-center align-middle h-screen">Loading...</div>);
   if (error) {
