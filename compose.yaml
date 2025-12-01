@@ -1,0 +1,27 @@
+services:
+  predict-server:
+    build:
+      context: ./server
+    depends_on:
+      - predict-microservice
+    environment:
+      NODE_ENV: production
+    env_file:
+      - ./server/.env
+    ports:
+      - 3000:3000
+    networks:
+      - predictball-network
+  
+
+  predict-microservice:
+    build:
+      context: ./microservice
+    ports:
+      - 8000:8000
+    networks:
+      - predictball-network
+
+networks:
+  predictball-network:
+    driver: bridge

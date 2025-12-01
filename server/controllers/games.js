@@ -101,7 +101,7 @@ export const predictMatchup = async (req, res) => {
   };
 
   try {
-    const apiResponse = await axios.post('http://127.0.0.1:8000/api/predict', postData, {
+    const apiResponse = await axios.post('http://predict-microservice:8000/api/predict', postData, {
       headers: {
         "Content-Type": 'application/json'
       }
