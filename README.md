@@ -14,4 +14,4 @@ The backend is written with JavaScript using Node and Express. Most of the endpo
 ## Conclusion
 The app is [available here](https://predict-ball.vercel.app/) and below is a preview of how the app works.
 
-![Preview for Predict Ball]([https://github.com/AF11703/predict-ball/blob/main/preview/predictball_preview.mp4](https://github.com/AF11703/predict-ball/blob/main/preview/predictball_preview-ezgif.com-optimize.gif))
+![Preview for Predict Ball](preview/predictball_preview-ezgif.com-optimize.gif)
